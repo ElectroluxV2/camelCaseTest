@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { ReformatHttpResponseInterceptor } from './shared/reformat-http-response.interceptor.service';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import {AfterModule} from './after/after/after.module';
+import {BeforeModule} from './before/before/before.module';
 
 @NgModule({
   declarations: [
@@ -11,13 +13,12 @@ import { ReformatHttpResponseInterceptor } from './shared/reformat-http-response
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule,
+    AfterModule,
+    BeforeModule
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: ReformatHttpResponseInterceptor,
-    multi: true
-  }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
